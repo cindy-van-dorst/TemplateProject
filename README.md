@@ -1,4 +1,4 @@
-# TemplateProjects
+# TemplateProject
 Simple react-native template app for use with mobx
 
 While trying to get a grip on mobx (in combination with react native) I ran 
