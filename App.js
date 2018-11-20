@@ -1,4 +1,4 @@
-
+// App.js creating the app
 
 import React, { Component } from "react";
 import Home from "./app/views/Home";

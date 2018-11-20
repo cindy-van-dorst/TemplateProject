@@ -1,16 +1,14 @@
- 
+
+// NoteStore.js providing a MOBX noteStore for observables
+
 import { observable, action} from 'mobx';
 import NotesApi from "../api/NotesApi";
-import { API_KEY, API_URL } from "react-native-dotenv";
-import axios from "axios";
-
 
 
 export default class NoteStore {
   notesApi = new NotesApi();
   @observable noteList = [ // fill the list with default value
-    { Id: "0", Prio: "1", Note: "Drink gin" },
-    { Id: "1", Prio: "2", Note: "Eat food via Store" }
+    { Id: "0", Prio: "1", Note: "Default from store" }
   ];
 
 
@@ -23,8 +21,7 @@ export default class NoteStore {
 }
 
 @action addNote() {
-  this.noteList.push({ Id: "9", Prio: "9", Note: "pushed note" });
+  this.noteList.push({ Id: "9", Prio: "9", Note: "static pushed note" });
 }
 
 }
-

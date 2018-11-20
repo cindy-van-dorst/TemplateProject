@@ -1,3 +1,5 @@
+// Home.js the main view component
+
 import React, { Component } from "react";
 import * as css from "../styles/Base";
 import { FlatList, Button, Text, View } from "react-native";
@@ -8,12 +10,10 @@ import NoteStore from "../stores/NoteStore";
 @observer
 export default class Home extends Component {
   noteStore = new NoteStore();
-  noteList = this.noteStore.noteList;
-  @observable boxVisible = true;
+  @observable boxVisible = false;
+  @observable value = 1;
 
   toggleBox = () => {
-    this.boxVisible = !this.boxVisible;
-    console.log("Notes are: " + JSON.stringify(this.noteList));
     this.noteStore.addNote(); // * ref push a on the array note for seeing if the state will update
   };
 
@@ -26,11 +26,14 @@ export default class Home extends Component {
           color="#841584"
         />
 
-        {this.boxVisible && <View style={css.home.box} />}
 
         <FlatList
-          data={this.noteList}
-          renderItem={({ item }) => <Text>{item.Prio} {item.Note}</Text>}
+          data={this.noteStore.noteList.slice()} // the slice () is super important here!
+          renderItem={({ item }) => (
+            <Text>
+              {item.Prio} {item.Note}
+            </Text>
+          )}
           keyExtractor={({ Id }, index) => Id}
         />
 
