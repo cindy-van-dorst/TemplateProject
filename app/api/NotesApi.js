@@ -1,6 +1,9 @@
 
 // Api.js supposed to handle all calls to the API and returns the value to the stores
 
+
+// todo: see if the store can be 'injected' in a 'non-component'?
+
 import { API_KEY, API_URL } from "react-native-dotenv";
 import axios from "axios";
 
