@@ -5,11 +5,9 @@ import * as css from "../styles/Base";
 import { FlatList, Button, Text, View } from "react-native";
 import { inject, observer } from "mobx-react";
 
-
 @inject(["noteStore"])
 @observer
 export default class Home extends Component {
-  
   addNoteBtn = () => {
     this.props.noteStore.addNote(); // * ref push a on the array note for seeing if the state will update
   };
@@ -24,7 +22,9 @@ export default class Home extends Component {
         />
 
         <FlatList
-          data={this.props.noteStore.noteList.slice()} // the slice () is super important here!
+          data={this.props.noteStore.noteList
+            .slice()
+            .sort((a, b) => a.Prio.localeCompare(b.Prio))}
           renderItem={({ item }) => (
             <Text>
               {item.Prio} {item.Note}
